@@ -26,18 +26,27 @@ function gameLoop(timestamp) {
 
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
+  // console.log(position);
+  if (speed.x !== 0) {
+    speed.x = speed.x < 0 ? speed.x = -maxSpeed : speed.x = maxSpeed;
+  }
+
+  if (speed.y !== 0) {
+    speed.y = speed.y < 0 ? speed.y = -maxSpeed : speed.y = maxSpeed;
+  }
+
+  // update position based on speed
   position.x += speed.x / deltaTime;
   position.y += speed.y / deltaTime;
 
-  // console.log(position);
   ctx.fillRect(position.x, position.y, 10, 10);
-
   requestAnimationFrame(gameLoop);  
 }
 
 document.addEventListener('keydown', event => {
-  console.log(`keydown: ${event.keyCode}`)
+  // console.log(`keydown: ${event.keyCode}`);
   if (event.keyCode === 32) {
+    console.log('boost on');
     boost = true;
     maxSpeed = 50;
   }
@@ -46,14 +55,15 @@ document.addEventListener('keydown', event => {
   if (event.keyCode === 38) speed.y = -maxSpeed;
   if (event.keyCode === 40) speed.y = maxSpeed;
   // console.log(`speed update`);
-  // console.log(speed)
+  // console.log(speed);
 });
 
 document.addEventListener('keyup', event => {
-  console.log(`keyup: ${event.keyCode}`)
+  // console.log(`keyup: ${event.keyCode}`)
   if (event.keyCode === 32) {
+    console.log('boost off');
     boost = false;
-    maxSpeed = 25;
+    maxSpeed = 25;    
   }
   if (event.keyCode === 37) speed.x = 0;
   if (event.keyCode === 39) speed.x = 0;
