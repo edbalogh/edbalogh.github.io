@@ -31,7 +31,7 @@ function gameLoop(timestamp) {
     speed.x = speed.x < 0 ? speed.x = -maxSpeed : speed.x = maxSpeed;
   }
 
-  if (speed.ye! !== 0) {
+  if (speed.y !== 0) {
     speed.y = speed.y < 0 ? speed.y = -maxSpeed : speed.y = maxSpeed;
   }
 
