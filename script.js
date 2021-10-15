@@ -5,6 +5,7 @@ let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d")
 let lastTime = 0;
 let maxSpeed = 25;
+let boost = false;
 
 ctx.fillStyle = '#f00';
 let position = {
@@ -36,6 +37,10 @@ function gameLoop(timestamp) {
 
 document.addEventListener('keydown', event => {
   console.log(`keydown: ${event.keyCode}`)
+  if (event.keyCode === 32) {
+    boost = true;
+    maxSpeed = 50;
+  }
   if (event.keyCode === 37) speed.x = -maxSpeed;
   if (event.keyCode === 39) speed.x = maxSpeed;
   if (event.keyCode === 38) speed.y = -maxSpeed;
@@ -46,6 +51,10 @@ document.addEventListener('keydown', event => {
 
 document.addEventListener('keyup', event => {
   console.log(`keyup: ${event.keyCode}`)
+  if (event.keyCode === 32) {
+    boost = false;
+    maxSpeed = 25;
+  }
   if (event.keyCode === 37) speed.x = 0;
   if (event.keyCode === 39) speed.x = 0;
   if (event.keyCode === 38) speed.y = 0;
