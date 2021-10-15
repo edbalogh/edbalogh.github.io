@@ -7,7 +7,7 @@ let lastTime = 0;
 let maxSpeed = 25;
 let boost = false;
 
-ctx.fillStyle = '#f00';
+ctx.fillStyle = 'blue';
 let position = {
   x: 10,
   y: 10
@@ -31,7 +31,7 @@ function gameLoop(timestamp) {
     speed.x = speed.x < 0 ? speed.x = -maxSpeed : speed.x = maxSpeed;
   }
 
-  if (speed.y !== 0) {
+  if (speed.ye! !== 0) {
     speed.y = speed.y < 0 ? speed.y = -maxSpeed : speed.y = maxSpeed;
   }
 
